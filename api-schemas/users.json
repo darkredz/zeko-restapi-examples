@@ -1,0 +1,11 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/user"
+  },
+  "example": [
+    { "id":1,"first_name":"John","last_name":"Smith","dob":"1939-03-23","notified":false},
+    { "id":2,"first_name":"Nee","last_name":"May","dob":"1983-12-21","notified":true},
+    { "id":3,"first_name":"Tan","last_name":"Chong","dob":"1943-04-12","notified":true}
+  ]
+}

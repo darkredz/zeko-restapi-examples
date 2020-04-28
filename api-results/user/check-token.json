@@ -1,0 +1,16 @@
+{
+  "200": {
+    "description": "User JWT token data",
+    "examples": {
+      "application/json": {
+        "iss": "http://localhost",
+        "id": 1,
+        "email": "asd@gmail.com",
+        "first_name": "John Smith",
+        "last_name": "",
+        "iat": 1588086290,
+        "exp": 1588345490
+      }
+    }
+  }
+}

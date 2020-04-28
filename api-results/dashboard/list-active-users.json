@@ -1,0 +1,46 @@
+{
+  "200": {
+    "description": "List of active users",
+    "examples": {
+      "application/json": [
+        {
+          "id": 3,
+          "first_name": "Joey",
+          "last_name": "Tan",
+          "dob": "2000-12-11"
+        },
+        {
+          "id": 2,
+          "first_name": "O'Connor",
+          "last_name": "John",
+          "dob": "1990-04-30",
+          "addresses": [
+            {
+              "id": 2,
+              "user_id": null,
+              "street1": "Jalan Gembira",
+              "street2": "Taman OUG"
+            }
+          ],
+          "roles": [
+            {
+              "id": 1,
+              "role_name": "admin",
+              "user_id": null
+            },
+            {
+              "id": 3,
+              "role_name": "normal user",
+              "user_id": null
+            },
+            {
+              "id": 5,
+              "role_name": "super moderator",
+              "user_id": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

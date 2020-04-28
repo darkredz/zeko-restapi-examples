@@ -1,0 +1,15 @@
+{
+  "200": {
+    "description": "User profile",
+    "examples": {
+      "application/json": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Smith",
+        "status": 1,
+        "last_access_at": "2020-04-28T15:04:50Z",
+        "notified": true
+      }
+    }
+  }
+}
