@@ -1,4 +1,4 @@
-# zeko-restapi-examples
+# Zeko REST Api Example Project
 Example project in Kotlin language using [Zeko Rest API framework](https://github.com/darkredz/zeko-restapi-framework)
 
 ## Getting Started
@@ -18,7 +18,7 @@ Just import it into Postman and start playing around
 
 
 ## Brief Explanation
-You should import the database zeko_test.sql into your MySQL server for the demo to work.
+You should import the database [zeko_test.sql](https://github.com/darkredz/zeko-restapi-examples/blob/master/zeko_test.sql) into your MySQL server for the demo to work.
 
 This projects uses [Koin](https://insert-koin.io/) for dependency injection.
 
