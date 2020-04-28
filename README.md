@@ -3,6 +3,7 @@ Example project in Kotlin language using [Zeko Rest API framework](https://githu
 
 ## Getting Started
 Clone the project, cd to the folder.
+
 Run the shell script to start the RESTful backend in development mode(hot reload enabled)
 ```shell script
 ./run.sh
@@ -17,6 +18,8 @@ Just import it into Postman and start playing around
 
 
 ## Brief Explanation
+You should import the database zeko_test.sql into your MySQL server for the demo to work.
+
 This projects uses [Koin](https://insert-koin.io/) for dependency injection.
 
 [BootstrapVerticle](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/examples/BootstrapVerticle.kt) is the main entry file and all dependencies needed are created here. 
