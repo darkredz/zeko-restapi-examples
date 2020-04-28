@@ -1,4 +1,4 @@
-# Zeko REST Api Example Project
+# Zeko Rest API Example Project
 Example project in Kotlin language using [Zeko Rest API framework](https://github.com/darkredz/zeko-restapi-framework)
 
 ## Getting Started
