@@ -16,6 +16,10 @@ Now, you should be able to test your API endpoints now with browser, [Postman](h
 After running app is compiled, you will also find swagger.json under api-doc folder. 
 Just import it into Postman and start playing around 
 
+To build a docker image execute the shell script which will build the image to your docker daemon
+```shell script
+./build-docker-image.sh
+```
 
 ## Brief Explanation
 You should import the database [zeko_test.sql](https://github.com/darkredz/zeko-restapi-examples/blob/master/zeko_test.sql) into your MySQL server for the demo to work.
