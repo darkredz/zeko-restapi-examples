@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.DeploymentOptions
+import io.vertx.core.Vertx
+import io.vertx.core.VertxOptions
+import io.vertx.core.http.HttpServerOptions
 import io.vertx.core.json.Json
 import io.vertx.core.logging.LoggerFactory
 import io.vertx.ext.auth.PubSecKeyOptions
@@ -23,6 +26,14 @@ import org.koin.standalone.StandAloneContext
 
 
 class BootstrapVerticle : AbstractVerticle() {
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            val vertx = Vertx.vertx(VertxOptions().setHAEnabled(false))
+            vertx.deployVerticle(BootstrapVerticle())
+        }
+    }
 
     override fun start() {
         val logger = LoggerFactory.getLogger("app")

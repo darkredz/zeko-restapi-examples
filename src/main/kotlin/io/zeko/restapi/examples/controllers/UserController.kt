@@ -80,7 +80,7 @@ class UserController : KoinComponent, ApiController {
         "dob => required, dateFormat, dateBetween;1911-01-01;2005-01-01",
         "email => required, length;5;45, email",
         "password => required, length;6;32, passwordSimple",
-        "country_iso => required, length;2;2",
+        "country_iso => required, length;2;2, inArray;MY;SG;CN;US;JP;UK",
         "campaign => isInteger, min;1, max;3"  //optional
     ])
     suspend fun register(ctx: RoutingContext) {
