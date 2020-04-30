@@ -1,7 +1,6 @@
-package io.zeko.restapi.examples.models.repositories
+package io.zeko.restapi.example.model.repositories
 
 import io.vertx.core.Vertx
-import io.vertx.core.json.Json
 import io.vertx.core.logging.Logger
 import io.zeko.db.sql.Insert
 import io.zeko.db.sql.Query
@@ -9,13 +8,13 @@ import io.zeko.db.sql.Update
 import io.zeko.db.sql.dsl.and
 import io.zeko.db.sql.dsl.eq
 import io.zeko.db.sql.dsl.greaterEq
-import io.zeko.restapi.examples.DB
-import io.zeko.restapi.examples.models.entities.User
+import io.zeko.restapi.example.DB
+import io.zeko.restapi.example.model.entities.User
 import io.zeko.model.DataMapper
 import io.zeko.model.MapperConfig
 import io.zeko.model.TableInfo
-import io.zeko.restapi.examples.models.entities.Address
-import io.zeko.restapi.examples.models.entities.Role
+import io.zeko.restapi.example.model.entities.Address
+import io.zeko.restapi.example.model.entities.Role
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.time.LocalDate

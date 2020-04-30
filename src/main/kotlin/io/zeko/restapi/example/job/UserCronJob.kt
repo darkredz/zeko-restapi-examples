@@ -1,10 +1,10 @@
-package io.zeko.restapi.examples.jobs
+package io.zeko.restapi.example.job
 
 import io.vertx.core.Vertx
 import io.vertx.core.json.Json
 import io.vertx.core.logging.Logger
-import io.zeko.restapi.examples.models.entities.User
-import io.zeko.restapi.examples.models.services.UserService
+import io.zeko.restapi.example.model.entities.User
+import io.zeko.restapi.example.model.services.UserService
 import io.zeko.restapi.annotation.cron.Cron
 import io.zeko.restapi.annotation.cron.CronSuspend
 import io.zeko.restapi.core.cron.CronJob

@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples
+package io.zeko.restapi.example
 
 import io.vertx.core.Vertx
 import io.vertx.core.logging.Logger

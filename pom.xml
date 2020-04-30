@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.zeko.restapi.examples</groupId>
+    <groupId>io.zeko.restapi.example</groupId>
     <artifactId>simple-api</artifactId>
     <version>1.0.0</version>
 
     <properties>
-        <vertx.verticle>io.zeko.restapi.examples.BootstrapVerticle</vertx.verticle>
+        <vertx.verticle>io.zeko.restapi.example.BootstrapVerticle</vertx.verticle>
         <kotlin.version>1.3.61</kotlin.version>
-        <zeko-restapi.version>1.0.5</zeko-restapi.version>
+        <zeko-restapi.version>1.0.6</zeko-restapi.version>
         <vertx.version>3.9.0</vertx.version>
         <micrometer.version>1.1.0</micrometer.version>
         <java.version>1.8</java.version>
@@ -67,6 +67,13 @@
             <artifactId>kotlinx-coroutines-core</artifactId>
             <version>1.3.3</version>
         </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-templ-freemarker</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

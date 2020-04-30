@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples.controllers
+package io.zeko.restapi.example.controller
 
 import io.vertx.core.Vertx
 import io.zeko.restapi.annotation.http.*
@@ -7,7 +7,7 @@ import io.zeko.restapi.core.controllers.ApiController
 import io.zeko.restapi.core.validations.ValidateResult
 import io.vertx.core.logging.Logger
 import io.vertx.ext.web.RoutingContext
-import io.zeko.restapi.examples.models.services.UserService
+import io.zeko.restapi.example.model.services.UserService
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 

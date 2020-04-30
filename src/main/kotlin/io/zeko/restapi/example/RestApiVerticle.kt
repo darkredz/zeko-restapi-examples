@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples
+package io.zeko.restapi.example
 
 import io.vertx.core.logging.Logger
 import io.vertx.ext.auth.jwt.JWTAuth
@@ -16,7 +16,7 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
     val jwtAuthRefresh: JWTAuth by inject("jwtAuthRefresh")
     val logger: Logger by inject()
 
-    val skipAuth = listOf("/user/login", "/user/register", "/user/refresh-token", "/ping-health")
+    val skipAuth = listOf("/user/login", "/user/register", "/user/refresh-token", "/ping-health", "/project/create")
 
     override suspend fun start() {
         val router = Router.router(vertx)
@@ -32,15 +32,15 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
         //Make some error
         router.get("/make-error").koto { ctx -> val s = 12 / 0; ctx.response().end("ok") }
 
-        bindRoutes("io.zeko.restapi.examples.controllers.GeneratedRoutes", router, logger)
-//        bindRoutes(io.zeko.restapi.examples.controllers.GeneratedRoutes(vertx), router, logger)
+        bindRoutes("io.zeko.restapi.example.controller.GeneratedRoutes", router, logger)
+//        bindRoutes(io.zeko.restapi.example.controller.GeneratedRoutes(vertx), router, logger)
 
         //handles error, output default status code, default message, log error
         handleRuntimeError(router, logger)
 
         //start running cron jobs
-        startCronJobs("io.zeko.restapi.examples.jobs.GeneratedCrons", logger)
-//        startCronJobs(io.zeko.restapi.examples.jobs.GeneratedCrons(vertx, logger), logger)
+        startCronJobs("io.zeko.restapi.example.job.GeneratedCrons", logger)
+//        startCronJobs(io.zeko.restapi.example.job.GeneratedCrons(vertx, logger), logger)
 
         vertx.createHttpServer()
                 .requestHandler(router)
