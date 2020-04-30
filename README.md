@@ -21,6 +21,16 @@ To build a docker image execute the shell script which will build the image to y
 ./build-docker-image.sh
 ```
 
+## Project Creator
+Zeko Rest API framework has built-in project creator feature since 1.0.7. 
+
+Try to create a new project barebone by calling the endpoint [/project/create](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/example/controller/ProjectCreatorController.kt) in this project.
+
+Simply send a post/get request to the endpoint using Postman, browser or wget and download the project zip file.
+
+![alt Zeko Project Creator](./zeko-project-creator.png "Project Creator for Zeko RESTful API framework")
+
+
 ## Brief Explanation
 You should import the database [zeko_test.sql](https://github.com/darkredz/zeko-restapi-examples/blob/master/zeko_test.sql) into your MySQL server for the demo to work.
 
