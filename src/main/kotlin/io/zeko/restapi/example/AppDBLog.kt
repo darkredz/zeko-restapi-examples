@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples
+package io.zeko.restapi.example
 
 import io.vertx.core.logging.Logger
 import io.zeko.db.sql.connections.DBLogLevel

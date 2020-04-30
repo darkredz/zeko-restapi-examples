@@ -26,15 +26,15 @@ You should import the database [zeko_test.sql](https://github.com/darkredz/zeko-
 
 This projects uses [Koin](https://insert-koin.io/) for dependency injection.
 
-[BootstrapVerticle](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/examples/BootstrapVerticle.kt) is the main entry file and all dependencies needed are created here. 
+[BootstrapVerticle](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/example/BootstrapVerticle.kt) is the main entry file and all dependencies needed are created here. 
 [Jackson](https://github.com/FasterXML/jackson) is set to use snake case naming strategy when encoding JSON.
 It is also set to convert date objects to ISO date time string. 
 
 Example usage of [SendGrid](https://sendgrid.com/) mail service can be found under user registration, which sends email in a circuit breaker strategy.
 You can uncomment/comment the code in the bootstrap class to switch to [Mandrill](https://mandrillapp.com/)
 
-[RestApiVerticle](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/examples/RestApiVerticle.kt) contains all the routes and cronjobs of the project. 
+[RestApiVerticle](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/example/RestApiVerticle.kt) contains all the routes and cronjobs of the project. 
 You will find error handler, JWT auth and token refresh here.
 
 SQL queries are executed with [Jasync](https://github.com/jasync-sql/jasync-sql) async MySQL driver, 
-however you can change to use [Hikari-CP](https://github.com/brettwooldridge/HikariCP) or [Vert.x JDBC client](https://vertx.io/docs/vertx-jdbc-client/kotlin/) in [DB class](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/examples/DB.kt)
+however you can change to use [Hikari-CP](https://github.com/brettwooldridge/HikariCP) or [Vert.x JDBC client](https://vertx.io/docs/vertx-jdbc-client/kotlin/) in [DB class](https://github.com/darkredz/zeko-restapi-examples/blob/master/src/main/kotlin/io/zeko/restapi/example/DB.kt)

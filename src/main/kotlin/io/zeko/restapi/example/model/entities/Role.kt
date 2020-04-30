@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples.models.entities
+package io.zeko.restapi.example.model.entities
 
 import io.zeko.model.Entity
 

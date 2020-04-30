@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples
+package io.zeko.restapi.example
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import com.fasterxml.jackson.databind.SerializationFeature
@@ -7,17 +7,15 @@ import io.vertx.core.AbstractVerticle
 import io.vertx.core.DeploymentOptions
 import io.vertx.core.Vertx
 import io.vertx.core.VertxOptions
-import io.vertx.core.http.HttpServerOptions
 import io.vertx.core.json.Json
 import io.vertx.core.logging.LoggerFactory
 import io.vertx.ext.auth.PubSecKeyOptions
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.ext.auth.jwt.JWTAuthOptions
-import io.zeko.restapi.examples.models.repositories.UserRepo
-import io.zeko.restapi.examples.models.services.UserService
+import io.zeko.restapi.example.model.repositories.UserRepo
+import io.zeko.restapi.example.model.services.UserService
 import io.zeko.restapi.core.mail.MailConfig
 import io.zeko.restapi.core.mail.MailService
-import io.zeko.restapi.core.mail.MandrillMail
 import io.zeko.restapi.core.mail.SendGridMail
 import org.koin.core.Koin
 import org.koin.dsl.module.module

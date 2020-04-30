@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples
+package io.zeko.restapi.example
 
 import io.vertx.core.Verticle
 import io.vertx.core.spi.VerticleFactory

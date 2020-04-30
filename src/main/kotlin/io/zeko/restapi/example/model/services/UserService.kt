@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples.models.services
+package io.zeko.restapi.example.model.services
 
 import io.vertx.circuitbreaker.CircuitBreaker
 import io.vertx.core.json.JsonObject
@@ -6,8 +6,8 @@ import io.vertx.core.logging.Logger
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.kotlin.core.json.json
 import io.vertx.kotlin.core.json.obj
-import io.zeko.restapi.examples.models.entities.User
-import io.zeko.restapi.examples.models.repositories.UserRepo
+import io.zeko.restapi.example.model.entities.User
+import io.zeko.restapi.example.model.repositories.UserRepo
 import io.zeko.restapi.core.mail.MailResponse
 import io.zeko.restapi.core.mail.MailService
 import io.zeko.restapi.core.security.JWTAuthHelper

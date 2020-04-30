@@ -1,4 +1,4 @@
-package io.zeko.restapi.examples.controllers
+package io.zeko.restapi.example.controller
 
 import io.vertx.core.Vertx
 import io.vertx.core.json.Json
@@ -9,9 +9,8 @@ import io.zeko.restapi.core.validations.ValidateResult
 import io.vertx.core.logging.Logger
 import io.vertx.ext.web.RoutingContext
 import io.zeko.db.sql.exceptions.DuplicateKeyException
-import io.zeko.restapi.examples.models.services.UserService
+import io.zeko.restapi.example.model.services.UserService
 import io.zeko.restapi.core.utilities.endJson
-import io.zeko.restapi.core.utilities.errorJson
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.time.LocalDate
