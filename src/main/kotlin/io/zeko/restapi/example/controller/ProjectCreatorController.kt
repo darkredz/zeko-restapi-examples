@@ -6,10 +6,9 @@ import io.zeko.restapi.annotation.Params
 import io.vertx.core.logging.Logger
 import io.vertx.ext.web.RoutingContext
 import io.zeko.restapi.core.controllers.ProjectInitController
-import org.koin.standalone.KoinComponent
 
 @Routing("/project")
-class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingContext) : KoinComponent, ProjectInitController(vertx, logger, context) {
+class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingContext) : ProjectInitController(vertx, logger, context) {
 
     /**
      * Visit this url to generate and download a new project setup automatically by the framework. JDBC url should be uri encoded
