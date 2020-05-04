@@ -4,7 +4,7 @@ import io.vertx.core.logging.Logger
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.handler.BodyHandler
-import io.vertx.ext.web.handler.TimeoutHandler
+import io.zeko.restapi.core.TimeoutHandler
 import io.zeko.restapi.core.security.JWTAuthHandler
 import io.zeko.restapi.core.security.JWTAuthRefreshHandler
 import io.zeko.restapi.core.verticles.ZekoVerticle
@@ -21,7 +21,7 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
     override suspend fun start() {
         val router = Router.router(vertx)
         router.route().handler(BodyHandler.create());
-        router.route().handler(TimeoutHandler.create(10000L, 503))
+        router.route().handler(TimeoutHandler(10000L, 503))
 
         router.route("/*").handler(JWTAuthHandler(jwtAuth, skipAuth))
 
