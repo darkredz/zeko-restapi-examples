@@ -11,7 +11,7 @@
     <properties>
         <vertx.verticle>io.zeko.restapi.example.BootstrapVerticle</vertx.verticle>
         <kotlin.version>1.3.61</kotlin.version>
-        <zeko-restapi.version>1.0.8</zeko-restapi.version>
+        <zeko-restapi.version>1.0.9</zeko-restapi.version>
         <vertx.version>3.9.0</vertx.version>
         <micrometer.version>1.1.0</micrometer.version>
         <java.version>1.8</java.version>
