@@ -12,7 +12,7 @@ class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingCon
 
     /**
      * Visit this url to generate and download a new project setup automatically by the framework. JDBC url should be uri encoded
-     * http://localhost:9999/init/create?artifact_id=trade-game&group_id=com.mycorp.superapp&version=1.0.0
+     * http://localhost:9999/project/create?artifact_id=trade-game&group_id=com.mycorp.superapp&version=1.0.0
      * &package_name=com.mycorp.superapp.trade&http_port=8888
      * &jwt_key=YourKey&jwt_refresh_key=YourKey&jwt_expiry=604800&jwt_refresh_expiry=1209600&jwt_refresh_when_expire=false
      * &controllers=user,stock,game_admin,game_manager
