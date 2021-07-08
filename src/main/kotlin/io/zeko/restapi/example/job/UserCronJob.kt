@@ -2,7 +2,7 @@ package io.zeko.restapi.example.job
 
 import io.vertx.core.Vertx
 import io.vertx.core.json.Json
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.zeko.restapi.example.model.entities.User
 import io.zeko.restapi.example.model.services.UserService
 import io.zeko.restapi.annotation.cron.Cron

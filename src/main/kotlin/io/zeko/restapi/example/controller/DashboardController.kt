@@ -5,7 +5,7 @@ import io.zeko.restapi.annotation.http.*
 import io.zeko.restapi.annotation.Params
 import io.zeko.restapi.core.controllers.ApiController
 import io.zeko.restapi.core.validations.ValidateResult
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.vertx.ext.web.RoutingContext
 import io.zeko.restapi.example.model.services.UserService
 import org.koin.standalone.KoinComponent

@@ -2,7 +2,7 @@ package io.zeko.restapi.example.model.services
 
 import io.vertx.circuitbreaker.CircuitBreaker
 import io.vertx.core.json.JsonObject
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.kotlin.core.json.json
 import io.vertx.kotlin.core.json.obj

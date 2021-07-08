@@ -1,11 +1,22 @@
 package io.zeko.restapi.example.controller
 
 import io.vertx.core.Vertx
-import io.zeko.restapi.annotation.http.*
-import io.zeko.restapi.annotation.Params
-import io.vertx.core.logging.Logger
+import io.vertx.core.buffer.Buffer
+import io.vertx.core.http.HttpHeaders
+import io.vertx.core.streams.Pump
 import io.vertx.ext.web.RoutingContext
+import io.vertx.kotlin.coroutines.await
+import io.zeko.restapi.annotation.Params
+import io.zeko.restapi.annotation.http.Routing
 import io.zeko.restapi.core.controllers.ProjectInitController
+import org.slf4j.Logger
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.util.*
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
 
 @Routing("/project")
 class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingContext) : ProjectInitController(vertx, logger, context) {
@@ -34,7 +45,32 @@ class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingCon
         "controllers => required, separateBy",
         "http_port => required, isInteger, min;80, max:20000"
     ])
-    override suspend fun createNew(ctx: RoutingContext) {
-        super.createNew(ctx)
+    suspend fun createNew(ctx: RoutingContext) {
+        val files = super.createNew(ctx, true)
+
+        if (files != null) {
+            val res = validateInput()
+            val fileName = res.values["artifact_id"].toString() + ".zip"
+            vertx.executeBlocking<String> {
+                val fos = FileOutputStream(fileName)
+                val zipOut = ZipOutputStream(fos)
+                for (file in files!!) {
+                    val zipEntry = ZipEntry(file.name)
+                    zipOut.putNextEntry(zipEntry)
+                    zipOut.write(Buffer.buffer(file.content).bytes)
+                }
+                zipOut.close()
+                fos.close()
+                it.complete(fileName)
+            }.await()
+
+            ctx.response()
+                .putHeader(HttpHeaders.CONTENT_TYPE, "application/zip, application/octet-stream")
+                .putHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"$fileName\"")
+
+            ctx.response().sendFile(fileName) {
+                vertx.fileSystem().delete(fileName)
+            }
+        }
     }
 }
