@@ -1,0 +1,20 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{HH:mm:ss.SSS} [%logger{50}:%level] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="app" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="io.vertx" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="com.hazelcast" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="io.netty.util.internal.PlatformDependent" level="ERROR">
+        <appender-ref ref="STDOUT" />
+    </logger>
+</configuration>

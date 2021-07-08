@@ -1,7 +1,7 @@
 package io.zeko.restapi.example.model.repositories
 
 import io.vertx.core.Vertx
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.zeko.db.sql.Insert
 import io.zeko.db.sql.Query
 import io.zeko.db.sql.Update

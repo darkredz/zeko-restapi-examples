@@ -8,7 +8,8 @@ import io.vertx.core.DeploymentOptions
 import io.vertx.core.Vertx
 import io.vertx.core.VertxOptions
 import io.vertx.core.json.Json
-import io.vertx.core.logging.LoggerFactory
+import io.vertx.core.json.jackson.DatabindCodec
+import org.slf4j.LoggerFactory
 import io.vertx.ext.auth.PubSecKeyOptions
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.ext.auth.jwt.JWTAuthOptions
@@ -37,21 +38,16 @@ class BootstrapVerticle : AbstractVerticle() {
         val logger = LoggerFactory.getLogger("app")
         logger.info("STARTING APP...")
 
-        Json.mapper.registerModule(JavaTimeModule())
-        Json.mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-        Json.mapper.propertyNamingStrategy = PropertyNamingStrategy.SNAKE_CASE
+        DatabindCodec.mapper().registerModule(JavaTimeModule())
+        DatabindCodec.mapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        DatabindCodec.mapper().propertyNamingStrategy = PropertyNamingStrategy.SNAKE_CASE
 
         //set JWT keys for auth
-        val jwtAuthKeys = listOf(
-                PubSecKeyOptions().setAlgorithm("HS256").setPublicKey("MTI5MDFmtKaWXdpZW5TJadcTIzSkjaRZaQy").setSymmetric(true)
-        )
-        val jwtOpt = JWTAuthOptions().setPubSecKeys(jwtAuthKeys)
-        var jwtAuth = JWTAuth.create(vertx, jwtOpt)
+        val pubSecKey = PubSecKeyOptions().setAlgorithm("HS256").setBuffer("MTI5MDFmtKaWXdpZW5TJadcTIzSkjaRZaQy")
+        var jwtAuth = JWTAuth.create(vertx, JWTAuthOptions().addPubSecKey(pubSecKey))
 
-        val jwtRefreshOpt = JWTAuthOptions().setPubSecKeys(listOf(
-                PubSecKeyOptions().setAlgorithm("HS256").setPublicKey("aWI5MFjSkMaWRtKddXZJaTcpZayTIzDQ5Tm").setSymmetric(true)
-        ))
-        var jwtAuthRefresh = JWTAuth.create(vertx, jwtRefreshOpt)
+        val pubSecKeyRefresh = PubSecKeyOptions().setAlgorithm("HS256").setBuffer("aWI5MFjSkMaWRtKddXZJaTcpZayTIzDQ5Tm")
+        var jwtAuthRefresh = JWTAuth.create(vertx, JWTAuthOptions().addPubSecKey(pubSecKeyRefresh))
 
         //Setup mail service with sendgrid
         val webClientSendGrid = SendGridMail.createSharedClient(vertx)
@@ -84,7 +80,7 @@ class BootstrapVerticle : AbstractVerticle() {
 
         vertx.registerVerticleFactory(KoinVerticleFactory)
         vertx.deployVerticle(
-                "${KoinVerticleFactory.prefix()}:${RestApiVerticle::class.java.canonicalName}",
+                RestApiVerticle::class.java.canonicalName,
                 DeploymentOptions().setInstances(1)
         )
     }

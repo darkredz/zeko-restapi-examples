@@ -1,6 +1,6 @@
 package io.zeko.restapi.example
 
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.handler.BodyHandler
@@ -32,18 +32,19 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
         //Make some error
         router.get("/make-error").koto { ctx -> val s = 12 / 0; ctx.response().end("ok") }
 
-        bindRoutes("io.zeko.restapi.example.controller.GeneratedRoutes", router, logger)
+        bindRoutes("io.zeko.restapi.example.controller.GeneratedRoutes", router, logger, true)
 //        bindRoutes(io.zeko.restapi.example.controller.GeneratedRoutes(vertx), router, logger)
+        withAccessLog(router, logger)
 
         //handles error, output default status code, default message, log error
         handleRuntimeError(router, logger)
 
         //start running cron jobs
-        startCronJobs("io.zeko.restapi.example.job.GeneratedCrons", logger)
+//        startCronJobs("io.zeko.restapi.example.job.GeneratedCrons", logger)
 //        startCronJobs(io.zeko.restapi.example.job.GeneratedCrons(vertx, logger), logger)
 
         vertx.createHttpServer()
                 .requestHandler(router)
-                .listen(config.getInteger("http.port", 9999))
+                .listen(config.getInteger("http_port", 9999))
     }
 }

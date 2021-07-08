@@ -1,6 +1,6 @@
 package io.zeko.restapi.example
 
-import io.vertx.core.logging.Logger
+import org.slf4j.Logger
 import io.zeko.db.sql.connections.DBLogLevel
 import io.zeko.db.sql.connections.DBLogger
 
