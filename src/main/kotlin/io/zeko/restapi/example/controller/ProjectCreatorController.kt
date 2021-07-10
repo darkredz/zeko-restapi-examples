@@ -46,31 +46,6 @@ class ProjectCreatorController(vertx: Vertx, logger: Logger, context: RoutingCon
         "http_port => required, isInteger, min;80, max:20000"
     ])
     suspend fun createNew(ctx: RoutingContext) {
-        val files = super.createNew(ctx, true)
-
-        if (files != null) {
-            val res = validateInput()
-            val fileName = res.values["artifact_id"].toString() + ".zip"
-            vertx.executeBlocking<String> {
-                val fos = FileOutputStream(fileName)
-                val zipOut = ZipOutputStream(fos)
-                for (file in files!!) {
-                    val zipEntry = ZipEntry(file.name)
-                    zipOut.putNextEntry(zipEntry)
-                    zipOut.write(Buffer.buffer(file.content).bytes)
-                }
-                zipOut.close()
-                fos.close()
-                it.complete(fileName)
-            }.await()
-
-            ctx.response()
-                .putHeader(HttpHeaders.CONTENT_TYPE, "application/zip, application/octet-stream")
-                .putHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"$fileName\"")
-
-            ctx.response().sendFile(fileName) {
-                vertx.fileSystem().delete(fileName)
-            }
-        }
+        super.createNew(ctx, false)
     }
 }

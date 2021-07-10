@@ -16,7 +16,7 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
     val jwtAuthRefresh: JWTAuth by inject("jwtAuthRefresh")
     val logger: Logger by inject()
 
-    val skipAuth = listOf("/user/login", "/user/register", "/user/refresh-token", "/ping-health", "/project/create")
+    val skipAuth = listOf("/user/login", "/user/register", "/user/refresh-token", "/ping-health", "/project/create", "/make-error")
 
     override suspend fun start() {
         val router = Router.router(vertx)
@@ -24,6 +24,7 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
         router.route().handler(TimeoutHandler(10000L, 503))
 
         router.route("/*").handler(JWTAuthHandler(jwtAuth, skipAuth))
+        withAccessLog(router, logger)
 
         router.post("/user/refresh-token").handler(JWTAuthRefreshHandler(jwtAuth, jwtAuthRefresh))
         //auth access token 60s, refresh token 300s, only allow refresh after token expired
@@ -34,7 +35,6 @@ class RestApiVerticle : ZekoVerticle(), KoinComponent {
 
         bindRoutes("io.zeko.restapi.example.controller.GeneratedRoutes", router, logger, true)
 //        bindRoutes(io.zeko.restapi.example.controller.GeneratedRoutes(vertx), router, logger)
-        withAccessLog(router, logger)
 
         //handles error, output default status code, default message, log error
         handleRuntimeError(router, logger)
